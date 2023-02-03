@@ -17,7 +17,7 @@
 #endif
 
 //please add gumbo(https://github.com/google/gumbo-parser/tree/master/src) sources or lib to the project.
-#include "gumbo.h"
+#include <CGumboParser/CGumboParser.h>
 #import <Foundation/Foundation.h>
 
 //for OCGumbo+Query.

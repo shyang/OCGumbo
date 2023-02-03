@@ -28,7 +28,7 @@ NS_INLINE GumboVector oc_gumbo_get_children(GumboNode *node) {
     if (node->type == GUMBO_NODE_ELEMENT) {
         return node->v.element.children;
     }
-    return kGumboEmptyVector;
+    return (GumboVector){};
 }
 
 NS_INLINE int oc_gumbo_get_child_cout(GumboNode *node) {
@@ -230,13 +230,13 @@ id OCGumboNodeCast(GumboNode *node) {
 }
 
 - (void)dealloc {
-    gumbo_destroy_output(&kGumboDefaultOptions, _gumboOutput);
+    gumbo_destroy_output(_gumboOutput);
 }
 
 - (instancetype)initWithHTMLString:(NSString *)htmlString {
     self = [super init];
     if (self) {
-        _gumboOutput = gumbo_parse([htmlString UTF8String]);
+        _gumboOutput = gumbo_parse_with_options(&kGumboDefaultOptions, [htmlString UTF8String], htmlString.length);
         _gumboNode = _gumboOutput->document;
     }
     return self;

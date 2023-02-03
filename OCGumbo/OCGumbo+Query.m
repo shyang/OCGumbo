@@ -88,7 +88,7 @@ NS_INLINE void add_valid_node_to_array(GumboNode *node, NSString *selector, NSMu
 
 NS_INLINE NSArray *oc_gumbo_find_children(GumboNode *root, NSString *selector, bool deep) {
     NSMutableArray *result = [NSMutableArray array];
-    GumboVector children = kGumboEmptyVector;
+    GumboVector children = {};
     if (root->type == GUMBO_NODE_DOCUMENT) {
         children = root->v.document.children;
     } else if (root->type == GUMBO_NODE_ELEMENT){
